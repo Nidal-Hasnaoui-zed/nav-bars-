@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navbar Example</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Alpine.js -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Optional: Customize Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#3b82f6',
+            dark: '#1f2937',
+            'dark-2': '#111827',
+            'dark-6': '#9ca3af',
+            'body-color': '#6b7280',
+          },
+        },
+      },
+      darkMode: 'class',
+    }
+  </script>
+</head>
+<body class="bg-white dark:bg-dark text-black dark:text-white">
+
+  <!-- ====== Navbar Section Start -->
+  <header x-data="{ navbarOpen: false }" class="flex w-full items-center bg-white dark:bg-dark">
+    <div class="container mx-auto px-4">
+      <div class="relative flex items-center justify-between">
+        <!-- Logo -->
+        <div class="w-60 max-w-full">
+          <a href="#" class="block py-5">
+            <img src="https://cdn.tailgrids.com/assets/images/logo/logo-primary.svg" alt="logo" class="dark:hidden" />
+            <img src="https://cdn.tailgrids.com/assets/images/logo/logo-white.svg" alt="logo" class="hidden dark:block" />
+          </a>
+        </div>
+
+        <!-- Hamburger and Menu -->
+        <div class="flex items-center justify-between w-full">
+          <!-- Hamburger -->
+          <button @click="navbarOpen = !navbarOpen" 
+                  :class="navbarOpen && 'navbarTogglerActive'" 
+                  class="lg:hidden absolute right-4 top-1/2 -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2">
+            <span class="block h-[2px] w-[30px] my-[6px] bg-body-color dark:bg-white"></span>
+            <span class="block h-[2px] w-[30px] my-[6px] bg-body-color dark:bg-white"></span>
+            <span class="block h-[2px] w-[30px] my-[6px] bg-body-color dark:bg-white"></span>
+          </button>
+
+          <!-- Nav Links -->
+          <nav :class="!navbarOpen && 'hidden'" 
+                class="absolute right-4 top-full w-full max-w-[250px] rounded-lg bg-white px-6 py-5 shadow lg:static lg:block lg:w-full lg:max-w-full lg:shadow-none dark:bg-dark-2 lg:dark:bg-transparent">
+            <ul class="block lg:flex">
+              <li>
+                <a href="#" class="flex py-2 text-base font-medium text-body-color hover:text-dark lg:ml-12 lg:inline-flex dark:text-dark-6 dark:hover:text-white">Home</a>
+              </li>
+              <li>
+                <a href="#" class="flex py-2 text-base font-medium text-body-color hover:text-dark lg:ml-12 lg:inline-flex dark:text-dark-6 dark:hover:text-white">Payment</a>
+              </li>
+              <li>
+                <a href="#" class="flex py-2 text-base font-medium text-body-color hover:text-dark lg:ml-12 lg:inline-flex dark:text-dark-6 dark:hover:text-white">Features</a>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Buttons -->
+          <div class="hidden sm:flex justify-end items-center gap-3 lg:pr-0 pr-4">
+            <a href="#" class="px-7 py-3 text-base font-medium text-dark hover:text-primary dark:text-white">Login</a>
+            <a href="#" class="rounded-md bg-primary px-7 py-3 text-base font-medium text-white hover:bg-primary/90">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- ====== Navbar Section End -->
+
+</body>
+</html>
